@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displacement Calculator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <main class="app-card">
+        <header class="page-header">
+            
+            <h1>Calculate and plot displacement</h1>
+            <p class="intro">Explore displacement over time using <span>s = ut + ½at²</span>.</p>
+        </header>
+
+        <div class="container">
+            <form id="inputForm" class="calculator-form">
+                <div class="field">
+                    <label for="u">Initial velocity <span>(u)</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="u" name="u" step="any" value="0" required>
+                        <span class="unit">m/s</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="a">Acceleration <span>(a)</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="a" name="a" step="any" value="1.5" required>
+                        <span class="unit">m/s²</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="t">Selected time <span>(t)</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="t" name="t" min="0.000001" step="any" value="10" required>
+                        <span class="unit">s</span>
+                    </div>
+                    <small class="hint">The graph spans from 0 to 2t, placing this time at its center.</small>
+                </div>
+                <div class="field">
+                    <label for="displacement">Displacement at t <span>(s)</span></label>
+                    <div class="input-with-unit">
+                        <input type="text" id="displacement" name="displacement" value="75.00" readonly aria-live="polite">
+                        <span class="unit">m</span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="interval">Number of samples</label>
+                    <select id="interval" name="interval">
+                        <option value="10" selected>10</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <button type="submit">Calculate</button>
+            </form>
+
+            <section class="chart-panel" aria-label="Displacement chart">
+                <canvas id="myChart" role="img" aria-label="Scatter plot of displacement over time"></canvas>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
